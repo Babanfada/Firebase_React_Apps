@@ -21,7 +21,7 @@ function App() {
       <div className="card">
         <Button
           color={"success"}
-          variant={"contained"}
+          variant={"outlined"}
           onClick={() => setCount((count) => count + 1)}
         >
           count is {count}
