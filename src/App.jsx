@@ -1,41 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import Button from "@mui/material/Button";
-import {AiFillForward} from "react-icons/ai"
-
+import { createContext, useState } from "react";
+import { HiHashtag } from "react-icons/hi";
+import { BsTwitter } from "react-icons/bs";
+import { FiSettings } from "react-icons/fi";
+import { FcGoogle } from "react-icons/fc";
+import AppleIcon from "@mui/icons-material/Apple";
+//import reactLogo from './assets/react.svg'
+//import "./App.css";
+import Home from "./Home";
+export const dataContext = createContext(null);
 function App() {
-  const [count, setCount] = useState(0)
-
+  const contents = [
+    {
+      component: <BsTwitter />,
+      text: "",
+      weight: "",
+      Size: "20px",
+    },
+    {
+      component: <HiHashtag />,
+      text: "Explore",
+      weight: "bold",
+      Size: "20px",
+    },
+    {
+      component: <FiSettings />,
+      text: "Settings",
+      weight: "",
+      Size: "20px",
+    },
+  ];
+  const infos = [
+    {
+      icon: <FcGoogle />,
+      text: "Sign up with Google",
+    },
+    {
+      icon: <AppleIcon />,
+      text: "Sign up with Apple",
+    },
+    {
+      icon: "",
+      text: "Sign up with Email and Password",
+    },
+  ];
+  const [typing, settyping] = useState(false);
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <dataContext.Provider value={{ contents, infos, typing, settyping }}>
+      <div
+        // onClick={() => settyping(false)}
+        style={{ color: "white", backgroundColor: "black" }}
+      >
+        <Home />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <Button
-          color={"success"}
-          variant={"outlined"}
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </Button>
-        <div style={{color:"blue"}}><AiFillForward /></div>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    </dataContext.Provider>
   );
 }
 
-export default App
+export default App;

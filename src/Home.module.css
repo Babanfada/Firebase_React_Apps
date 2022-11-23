@@ -1,0 +1,16 @@
+.Home {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.3fr;
+  /* border: 1px solid rgba(255, 255, 255, 0.479); */
+  height: 100vh;
+}
+
+
+.setting:hover {
+  cursor: pointer;
+  /* border: 1px solid red; */
+  padding: 5px;
+  border-radius: 50%;
+  color: white;
+  background-color:  rgba(211, 211, 211, 0.089);
+}
