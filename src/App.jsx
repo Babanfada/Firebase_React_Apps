@@ -7,6 +7,7 @@ import AppleIcon from "@mui/icons-material/Apple";
 //import reactLogo from './assets/react.svg'
 //import "./App.css";
 import Home from "./Home";
+
 export const dataContext = createContext(null);
 function App() {
   const contents = [
@@ -48,9 +49,15 @@ function App() {
     <dataContext.Provider value={{ contents, infos, typing, settyping }}>
       <div
         // onClick={() => settyping(false)}
-        style={{ color: "white", backgroundColor: "black" }}
+        style={{
+          color: "white",
+          backgroundColor: "black",
+          // border: "1px solid red",
+          height: "100vh",
+        }}
       >
         <Home />
+        
       </div>
     </dataContext.Provider>
   );
