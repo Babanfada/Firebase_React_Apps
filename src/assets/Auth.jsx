@@ -21,7 +21,12 @@ const Auth = () => {
   console.log(infos);
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        // position: "fixed",
+      }}
     >
       <div
         style={{

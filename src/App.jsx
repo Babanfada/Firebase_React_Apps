@@ -44,6 +44,7 @@ function App() {
       text: "Sign up with Email and Password",
     },
   ];
+
   const [typing, settyping] = useState(false);
   return (
     <dataContext.Provider value={{ contents, infos, typing, settyping }}>
@@ -53,11 +54,10 @@ function App() {
           color: "white",
           backgroundColor: "black",
           // border: "1px solid red",
-          height: "100vh",
+          height: "auto",
         }}
       >
         <Home />
-        
       </div>
     </dataContext.Provider>
   );

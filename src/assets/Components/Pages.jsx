@@ -17,7 +17,7 @@ const Pages = ({ contents }) => {
   };
   return (
     <div className={style1.hover} style={styles}>
-      <div>{component}</div>
+      <div  className={style1.size}>{component}</div>
       <div style={{ fontWeight: weight, fontSize: Size }}>{text}</div>
     </div>
   );

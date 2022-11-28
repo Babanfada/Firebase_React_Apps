@@ -5,3 +5,8 @@
   height: 50px;
   /* border: 1px solid white; */
 }
+
+.size{
+  font-size: 2vw;
+  color: white;
+}
