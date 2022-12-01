@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import styles from "./TweetDisplay.module.css";
+import { Link } from "react-router-dom";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[500]),
@@ -37,8 +38,11 @@ const TrendNoticeComp = () => {
         <div
           className={styles.upload}
           style={{ padding: "3px", borderRadius: "50%" }}
+          title="Back"
         >
-          <HiOutlineArrowSmLeft />
+          <Link to="/Home">
+            <HiOutlineArrowSmLeft />
+          </Link>
         </div>
 
         <h4 style={{ fontWeight: "bold", fontSize: "20px" }}>Football</h4>
@@ -63,6 +67,7 @@ const TrendNoticeComp = () => {
         <div
           className={styles.upload}
           style={{ padding: "3px", borderRadius: "50%" }}
+          title="Share"
         >
           <MdOutlineFileUpload />
         </div>

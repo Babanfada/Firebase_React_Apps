@@ -16,6 +16,9 @@ import Category from "./assets/Components/Category";
 import { categoryData } from "./assets/Components/Data";
 import TrendNotice from "./assets/Components/TrendNotice";
 import TrendNoticeComp from "./assets/Components/TrendNoticeComp";
+import Terms from "./assets/Terms";
+import styless from "../src/assets/Components/TweetDisplay.module.css";
+import { IoIosMore } from "react-icons/io";
 // import { Link, Outlet } from "react-router-dom";
 const Homes = () => {
   const { contents, TweetDetails } = useContext(dataContext);
@@ -73,10 +76,10 @@ const Homes = () => {
               alignItems: "center",
               justifyContent: "space-between",
               gap: "3vw",
-              //   border: "1px solid red",
+            //   border: "1px solid red",
               padding: " 0 1.5vw",
               height: "fit-content",
-              position: "sticky",
+              //   position: "sticky",
               top: "0vh",
               zIndex: "1",
               backgroundColor: "black",
@@ -99,13 +102,92 @@ const Homes = () => {
           <div
             style={{
               padding: "1vw 3vw 0 2vw",
-              position: "sticky",
+              //   position: "sticky",
               top: "0vh",
               height: "fit-content",
-              // border:"1px solid red"
+            //   border: "1px solid red",
             }}
           >
             <Auth />
+          </div>
+          <div
+            style={{
+              padding: "0",
+            //   border: "1px solid red",
+              margin: "2vh 2vw",
+              borderRadius: "20px",
+              backgroundColor: "rgba(255, 255, 255, 0.080)",
+            }}
+          >
+            {Trends.map((trend, index) => {
+              return (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "5px 1vw",
+                    cursor: "pointer",
+                  }}
+                  className={styles.trend}
+                  key={index}
+                >
+                  <div
+                    style={{
+                      // border: "1px solid red",
+                      cursor: "pointer",
+                      // ":hover": { backgroundColor: "red" },
+                    }}
+                  >
+                    <Text
+                      text={{
+                        text1: trend.category,
+                        text2: trend.trending,
+                      }}
+                      styles={{
+                        fontWeight: "normal",
+                        fontSize: "0.8rem",
+                        color: "rgba(255, 255, 255, 0.379)",
+                      }}
+                    />
+                    <Text2
+                      styles={{
+                        fontWeight: "bolder",
+                        fontSize: "1rem",
+                        margin: "0",
+                      }}
+                      text={trend.topic}
+                    />
+                    <p
+                      style={{
+                        fontWeight: "normal",
+                        fontSize: "0.6rem",
+                        color: "rgba(255, 255, 255, 0.379)",
+                        //  border:"1px solid red",
+                        marginBottom: "0",
+                      }}
+                    >
+                      {trend.tweets}
+                    </p>
+                  </div>
+
+                  <div
+                    style={{
+                      color: "rgba(255, 255, 255, 0.379)",
+                      padding: "7px",
+                      borderRadius: "50%",
+                    }}
+                    title={"More"}
+                    className={styless.upload}
+                  >
+                    <IoIosMore />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ padding: " 0 2vw" }}>
+            <Terms />
           </div>
         </div>
       </div>

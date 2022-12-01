@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { dataContext } from "../App";
 import Signupbtn from "./Components/Signupbtn";
+import Terms from "./Terms";
 
 const Auth = () => {
   const { infos } = useContext(dataContext);
@@ -10,14 +11,7 @@ const Auth = () => {
     color: "rgba(255, 255, 255, 0.379)",
     lineHeight: "0",
   };
-  const styles1 = {
-    fontSize: "12px",
-    marginRight: "5px",
-    color: "rgba(255, 255, 255, 0.379)",
-    textDecoration: "none",
-    // whiteSpace:"nowrap",
-    flexWrap: "wrap",
-  };
+
   console.log(infos);
   return (
     <div
@@ -26,6 +20,7 @@ const Auth = () => {
         flexDirection: "column",
         alignItems: "center",
         // position: "fixed",
+        // border: "1px solid red",
       }}
     >
       <div
@@ -79,31 +74,6 @@ const Auth = () => {
           </a>
           .
         </small>
-      </div>
-      <div style={{ marginRight: "5px", width: "88%" }}>
-        <p>
-          <a style={styles1} href="#">
-            Terms of Service
-          </a>
-          <a style={styles1} href="#">
-            Privacy Policy
-          </a>
-          <a style={styles1} href="#">
-            Cookie Policy
-          </a>
-          <a style={styles1} href="#">
-            Accessibility
-          </a>
-          <a style={styles1} href="#">
-            Ads info
-          </a>
-          <a style={styles1} href="#">
-            more...
-          </a>
-          <small style={styles1} href="#">
-            © 2022 Twitter Inc.
-          </small>
-        </p>
       </div>
     </div>
   );

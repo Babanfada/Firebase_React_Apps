@@ -16,6 +16,7 @@ import Category from "./assets/Components/Category";
 import { categoryData } from "./assets/Components/Data";
 import TrendNotice from "./assets/Components/TrendNotice";
 import { Link, Outlet } from "react-router-dom";
+import Terms from "./assets/Terms";
 const Home = () => {
   const { contents, TweetDetails } = useContext(dataContext);
   return (
@@ -158,7 +159,7 @@ const Home = () => {
             })}
             {/* </div> */}
           </div>
-          <Link to="/Homes">
+          <Link style={{ textDecoration: "none" }} to="/Homes">
             <Category categoryData={categoryData} index={0} />
           </Link>
 
@@ -180,6 +181,7 @@ const Home = () => {
           }}
         >
           <Auth />
+          <Terms />
         </div>
       </div>
       {/* Bottom Section */}
