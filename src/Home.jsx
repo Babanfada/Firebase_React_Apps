@@ -12,10 +12,21 @@ import Text2 from "../src/assets/Components/Text2";
 import Text from "../src/assets/Components/Text";
 import { Trends } from "./assets/Components/Data";
 import TweetDisplay from "./assets/Components/TweetDisplay";
+import Category from "./assets/Components/Category";
+import { categoryData } from "./assets/Components/Data";
+import TrendNotice from "./assets/Components/TrendNotice";
+import { Link, Outlet } from "react-router-dom";
 const Home = () => {
-  const { contents } = useContext(dataContext);
+  const { contents, TweetDetails } = useContext(dataContext);
   return (
-    <div style={{ height: "100vh", position: "relative" }}>
+    <div
+      style={{
+        height: "auto",
+        position: "relative",
+        color: "white",
+        backgroundColor: "black",
+      }}
+    >
       {/* Top Section */}
       <div className={styles.Home} style={{ position: "relative" }}>
         <div
@@ -56,6 +67,7 @@ const Home = () => {
               position: "sticky",
               top: "0vh",
               zIndex: "1",
+              backgroundColor: "black",
             }}
           >
             <Search />
@@ -73,26 +85,31 @@ const Home = () => {
             </div>
           </div>
           {/* contents under the search bar component */}
+          <Outlet />
           <First />
           <div
-            style={{
-              padding: " 0 1vw",
-              // border: "1px solid  rgba(255, 255, 255, 0.379)",
-              height: "auto",
-            }}
+            style={
+              {
+                // padding: " 0 1vw",
+                // border: "1px solid  rgba(255, 255, 255, 0.379)",
+                // height: "auto",
+              }
+            }
           >
-            <div style={{ paddingTop: "2vh';" }}>
+            <div style={{ padding: "2vh 0 0 1vw" }}>
               <Text2
                 text={"Trends for you"}
                 styles={{ fontWeight: "bolder", fontSize: "1.2rem" }}
               />
             </div>
-            <TweetDisplay />
+            {/* {TweetDetails.map((TweetDetail, index) => {
+              return <TweetDisplay key={index} TweetDetail={TweetDetail} />;
+            })} */}
             {/* <div> */}
             {Trends.map((trend, index) => {
               return (
                 <div
-                  style={{ padding: "5px 0", cursor: "pointer" }}
+                  style={{ padding: "5px 1vw", cursor: "pointer" }}
                   className={styles.trend}
                   key={index}
                 >
@@ -141,7 +158,17 @@ const Home = () => {
             })}
             {/* </div> */}
           </div>
+          <Link to="/Homes">
+            <Category categoryData={categoryData} index={0} />
+          </Link>
+
+          {/* <Category categoryData={categoryData} index={1} /> */}
+          {/* <TrendNotice /> */}
+          {TweetDetails.map((TweetDetail, index) => {
+            return <TweetDisplay key={index} TweetDetail={TweetDetail} />;
+          })}
         </div>
+
         {/* Authorization Section */}
         <div
           style={{

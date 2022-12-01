@@ -1,41 +1,48 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import twenty3 from "../../images/emile.jpg";
-import twenty2 from "../../images/horticulturist.jpg";
-import { FcApproval } from "react-icons/fc";
-import { MdOutlineFileUpload } from "react-icons/md";
-import { TbMessageCircle2 } from "react-icons/tb";
-import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
+//import { Link } from "react-router-dom";
+import styles from "./TweetDisplay.module.css";
+import Avatar from "@mui/material/Avatar";
+// import { FcApproval } from "react-icons/fc";
 import { IoIosMore } from "react-icons/io";
-
-const TweetDisplay = () => {
+import { dataContext } from "../../App";
+import { useContext } from "react";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import MediaDisplay from "../Components/MediaDisplay";
+const TweetDisplay = ({ TweetDetail }) => {
+  const { icons } = useContext(dataContext);
   return (
     <div
       style={{
-        border: "1px solid red",
+        borderTop: "1px solid rgba(255, 255, 255, 0.379)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.379)",
         display: "flex",
+        padding: "1vw 1vw 0vw 1vw",
         gap: "10px",
         cursor: "pointer",
       }}
     >
       <div>
-        <img
-          style={{
-            border: "1px solid red",
-            borderRadius: "50%",
-            width: "70px",
-          }}
-          src={twenty3}
-          alt={"draft"}
+        <Avatar
+          alt="Remy Sharp"
+          src={TweetDetail.image}
+          sx={{ width: 56, height: 56 }}
         />
       </div>
-      <div>
+
+      <div
+        style={
+          {
+            //   border: "1px solid blue",
+            //   flexBasis: "1",
+          }
+        }
+      >
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            border: "1px solid blue",
+            // border: "1px solid blue",
             gap: "3px",
           }}
         >
@@ -52,7 +59,7 @@ const TweetDisplay = () => {
                 fontSize: "15px",
                 fontWeight: "bold",
                 gap: "2px",
-                border: "1px solid red",
+                // border: "1px solid red",
               }}
             >
               <a
@@ -62,56 +69,84 @@ const TweetDisplay = () => {
                 }}
                 href="#"
               >
-                <span>Fabrizio Romano </span>
+                <span className={styles.name}>{TweetDetail.USERNAME1} </span>
               </a>
               <span>
-                <FcApproval />
+                <VerifiedIcon sx={{ color: "#1D9BF0", fontSize: "small" }} />
               </span>
             </div>
             <div
               style={{
                 fontSize: "12px",
-                border: "1px solid red",
+                // border: "1px solid red",
                 color: "rgba(255, 255, 255, 0.379)",
               }}
             >
-              @UserName.15h
+              {TweetDetail.username}
+            </div>
+            <div
+              style={{
+                fontSize: "12px",
+                // border: "1px solid red",
+                color: "rgba(255, 255, 255, 0.379)",
+              }}
+              className={styles.name}
+            >
+              {TweetDetail.time}
             </div>
           </div>
           <div
             style={{
               color: "rgba(255, 255, 255, 0.379)",
+              padding: "7px",
+              borderRadius: "50%",
             }}
+            title={"More"}
+            className={styles.upload}
           >
             <IoIosMore />
           </div>
           {/* <span>15h</span> */}
         </div>
-        <div>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet,
-            delectus!
-          </p>
-
-          <img style={{ borderRadius: "10px" }} src={twenty2} alt="drafts" />
-        </div>
+        <MediaDisplay TweetDetail={TweetDetail} />
         <div
           style={{
             display: "flex",
-            justifyContent:"flex-start",
-            gap:"8vw",
-            border: "1px solid red",
-            padding: "10px 0 ",
+            justifyContent: "flex-start",
+            gap: "6vw",
+            // border: "1px solid red",
+            padding: "2px 0 ",
           }}
         >
-          <TbMessageCircle2 />
-          <AiOutlineRetweet />
-          <AiOutlineHeart />
-          <MdOutlineFileUpload />
+          {icons.map((icon) => (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+                color: "rgba(255, 255, 255, 0.379)",
+                // border: "3px solid red",
+              }}
+              title={icon.title}
+            >
+              <span
+                className={icon.styling}
+                style={{
+                  //   border: "1px solid blue",
+                  padding: "7px",
+                  borderRadius: "50%",
+                }}
+              >
+                {icon.icon}
+              </span>
+              <span className={icon.styleText} style={{ fontSize: "small" }}>
+                {icon.number}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
-
 export default TweetDisplay;
