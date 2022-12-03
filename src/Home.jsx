@@ -17,6 +17,8 @@ import { categoryData } from "./assets/Components/Data";
 import TrendNotice from "./assets/Components/TrendNotice";
 import { Link, Outlet } from "react-router-dom";
 import Terms from "./assets/Terms";
+import Relevant from "./assets/Components/Relevant";
+import BasicModal from "./assets/Components/BasicModal";
 const Home = () => {
   const { contents, TweetDetails } = useContext(dataContext);
   return (
@@ -49,6 +51,7 @@ const Home = () => {
               <Pages contents={content} />
             </div>
           ))}
+          
         </div>
         <div
           style={{
@@ -86,7 +89,7 @@ const Home = () => {
             </div>
           </div>
           {/* contents under the search bar component */}
-          <Outlet />
+          {/* <Outlet /> */}
           <First />
           <div
             style={
@@ -159,14 +162,43 @@ const Home = () => {
             })}
             {/* </div> */}
           </div>
-          <Link style={{ textDecoration: "none" }} to="/Homes">
+          <Link
+            style={{ textDecoration: "none" }}
+            // to="/Homes"
+            to={`/Homes/${categoryData[0].id}`}
+          >
             <Category categoryData={categoryData} index={0} />
+          </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            // to="/Homes"
+            to={`/Homes/${categoryData[1].id}`}
+          >
+            <Category categoryData={categoryData} index={1} />
+          </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            // to="/Homes"
+            to={`/Homes/${categoryData[2].id}`}
+          >
+            <Category categoryData={categoryData} index={2} />
           </Link>
 
           {/* <Category categoryData={categoryData} index={1} /> */}
           {/* <TrendNotice /> */}
           {TweetDetails.map((TweetDetail, index) => {
-            return <TweetDisplay key={index} TweetDetail={TweetDetail} />;
+            return (
+              <Link
+                // to="Relevant"
+                to={`/Homes/${TweetDetail.id}/Relevant/${TweetDetail.id}`}
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                <TweetDisplay key={index} TweetDetail={TweetDetail} />
+              </Link>
+            );
           })}
         </div>
 
@@ -177,10 +209,16 @@ const Home = () => {
             position: "sticky",
             top: "0vh",
             height: "fit-content",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
             // border:"1px solid red"
           }}
         >
           <Auth />
+
+          {/* <Outlet /> */}
+
           <Terms />
         </div>
       </div>

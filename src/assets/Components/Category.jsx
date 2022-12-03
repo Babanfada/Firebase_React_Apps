@@ -3,6 +3,7 @@ import React from "react";
 import Text2 from "./Text2";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import Avatar from "@mui/material/Avatar";
+import BasicModal2 from "./BasicModal";
 
 const Category = ({ categoryData, index }) => {
   return (
@@ -58,6 +59,7 @@ const Category = ({ categoryData, index }) => {
             size={"small"}
           >
             Follow
+            {/* <BasicModal2 index={index} /> */}
           </Button>
         </div>
       </div>

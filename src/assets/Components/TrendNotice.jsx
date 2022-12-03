@@ -23,7 +23,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
     backgroundColor: grey[700],
   },
 }));
-const TrendNotice = () => {
+const TrendNotice = ({Datum}) => {
   return (
     <div style={{ padding: "1vw" }}>
       <h1
@@ -34,7 +34,7 @@ const TrendNotice = () => {
           margin: "0",
         }}
       >
-        Sport
+       {Datum.heading}
       </h1>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <small
@@ -44,7 +44,7 @@ const TrendNotice = () => {
             color: "rgba(255, 255, 255, 0.379)",
           }}
         >
-          All about sport
+          {Datum.sub}
         </small>
         <small
           style={{

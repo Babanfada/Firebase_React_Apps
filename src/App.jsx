@@ -19,29 +19,37 @@ import Home from "./Home";
 // import TrendNotice from "./assets/Components/TrendNotice";
 import ScrollToTop from "./assets/Components/ScrollToTop";
 import Homes from "./Homes";
+import Relevant from "./assets/Components/Relevant";
 
 export const dataContext = createContext(null);
 function App() {
   const [audio, setaudio] = useState(true);
   const [video, setvideo] = useState(true);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const contents = [
     {
       component: <BsTwitter />,
       text: "",
       weight: "",
       Size: "20px",
+      link: "/Home",
     },
     {
       component: <HiHashtag />,
       text: "Explore",
       weight: "bold",
       Size: "20px",
+      link: "/Home",
     },
     {
       component: <FiSettings />,
       text: "Settings",
       weight: "",
       Size: "20px",
+      link: "",
     },
   ];
   const infos = [
@@ -91,21 +99,25 @@ function App() {
   ];
   const TweetDetails = [
     {
+      id: "0",
       USERNAME1: "Fabrizio Romano",
       username: "@fabrizio",
       image: twenty3,
       time: "16h",
       text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet delectus!",
+      bio: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet delectus!",
       media: [twenty2, twenty3],
       // video:video,
       audi: audio,
     },
     {
-      USERNAME1: "Fabrizio Romano",
-      username: "@fabrizio",
+      id: "1",
+      USERNAME1: "Ibrahim muhammed",
+      username: "@tolani",
       image: twenty2,
-      time: "16h",
-      text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet delectus!",
+      time: "20h",
+      text: " dolor sit amet consectetur adipisicing elit. Eveniet delectus Lorem ipsum,!",
+      bio: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet delectus!",
       media: [twenty2, twenty3],
       // video:video,
       audi: audio,
@@ -127,13 +139,21 @@ function App() {
         audio,
         setvideo,
         setaudio,
+        handleOpen,
+        handleClose,
+        open,
+        setOpen
       }}
     >
       <Router>
         <ScrollToTop />
         <Routes>
-          <Route path="/Home" exact element={<Home />} />
-          <Route path="/Homes" element={<Homes />} />
+          <Route path="/Home" exact element={<Home />}>
+            {/* <Route path="Relevant" element={<Relevant />} /> */}
+          </Route>
+          <Route path="/Homes/:id" element={<Homes />}>
+            <Route path="Relevant/:id" element={<Relevant />} />
+          </Route>
         </Routes>
       </Router>
     </dataContext.Provider>

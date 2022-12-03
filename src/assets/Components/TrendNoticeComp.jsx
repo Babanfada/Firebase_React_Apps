@@ -15,7 +15,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const TrendNoticeComp = () => {
+const TrendNoticeComp = ({Datum}) => {
   return (
     <div
       style={{
@@ -45,7 +45,7 @@ const TrendNoticeComp = () => {
           </Link>
         </div>
 
-        <h4 style={{ fontWeight: "bold", fontSize: "20px" }}>Football</h4>
+        <h4 style={{ fontWeight: "bold", fontSize: "20px" }}>{Datum.heading}</h4>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "1vh" }}>
         <ColorButton

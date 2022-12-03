@@ -35,18 +35,39 @@ export const Trends = [
     topic: "Azul",
     tweets: "50.7K Tweets",
   },
+  {
+    category: "Celebrities",
+    trending: "Trending",
+    topic: "Azul",
+    tweets: "50.7K Tweets",
+  },
+  {
+    category: "Celebrities",
+    trending: "Trending",
+    topic: "Azul",
+    tweets: "50.7K Tweets",
+  },
+  {
+    category: "Celebrities",
+    trending: "Trending",
+    topic: "Azul",
+    tweets: "50.7K Tweets",
+  },
 ];
 
 export const categoryData = [
   {
+    id: "0",
     heading: "Funny Tweets",
     sub: "Tweets making people laugh",
   },
   {
+    id: "1",
     heading: "Popular images",
     sub: "Only on Twitter",
   },
   {
+    id: "2",
     heading: "Social Brands",
     sub: "Brands",
   },
@@ -62,5 +83,4 @@ export const TrendNoticeData = [
     sub1: "All about sport",
     sub2: "Tweets about the Topics you follow show up in your Home Timeline",
   },
-  
 ];

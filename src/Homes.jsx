@@ -19,9 +19,20 @@ import TrendNoticeComp from "./assets/Components/TrendNoticeComp";
 import Terms from "./assets/Terms";
 import styless from "../src/assets/Components/TweetDisplay.module.css";
 import { IoIosMore } from "react-icons/io";
+import { useParams } from "react-router-dom";
+import Relevant from "./assets/Components/Relevant";
+import { Outlet, Link } from "react-router-dom";
 // import { Link, Outlet } from "react-router-dom";
 const Homes = () => {
   const { contents, TweetDetails } = useContext(dataContext);
+  const { id } = useParams();
+  const Datum = categoryData.find((data) => {
+    return data.id == id;
+  });
+  const user = TweetDetails.find((data) => {
+    return data.id == id;
+  });
+
   return (
     <div
       style={{
@@ -49,7 +60,9 @@ const Homes = () => {
                 cursor: "pointer",
               }}
             >
-              <Pages contents={content} />
+              <Link style={{ textDecoration: "none" }} to={content.link}>
+                <Pages contents={content} />
+              </Link>
             </div>
           ))}
         </div>
@@ -59,11 +72,22 @@ const Homes = () => {
             borderRight: "1px solid  rgba(255, 255, 255, 0.379)",
           }}
         >
-          <TrendNoticeComp />
-          <TrendNotice />
+          <TrendNoticeComp Datum={Datum} />
+          <TrendNotice Datum={Datum} />
 
           {TweetDetails.map((TweetDetail, index) => {
-            return <TweetDisplay key={index} TweetDetail={TweetDetail} />;
+            return (
+              <Link
+                to={`Relevant/${TweetDetail.id}`}
+                // to="Relevant"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                <TweetDisplay key={index} TweetDetail={TweetDetail} />
+              </Link>
+            );
           })}
         </div>
 
@@ -76,7 +100,7 @@ const Homes = () => {
               alignItems: "center",
               justifyContent: "space-between",
               gap: "3vw",
-            //   border: "1px solid red",
+              //   border: "1px solid red",
               padding: " 0 1.5vw",
               height: "fit-content",
               //   position: "sticky",
@@ -105,15 +129,20 @@ const Homes = () => {
               //   position: "sticky",
               top: "0vh",
               height: "fit-content",
-            //   border: "1px solid red",
+              //   border: "1px solid red",
             }}
           >
             <Auth />
           </div>
+
+          <div style={{ padding: " 0 2.1vw", marginTop: "10px" }}>
+            <Outlet />
+          </div>
+
           <div
             style={{
               padding: "0",
-            //   border: "1px solid red",
+              //   border: "1px solid red",
               margin: "2vh 2vw",
               borderRadius: "20px",
               backgroundColor: "rgba(255, 255, 255, 0.080)",
@@ -186,6 +215,8 @@ const Homes = () => {
               );
             })}
           </div>
+          {/* relevant */}
+
           <div style={{ padding: " 0 2vw" }}>
             <Terms />
           </div>
