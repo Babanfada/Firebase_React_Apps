@@ -24,9 +24,9 @@ const style = {
 
 export default function BasicModal2({index}) {
   const { handleClose, handleOpen, open, setOpen } = useContext(dataContext);
-//   const { id } = useParams();
+   const { id } = useParams();
   const user = categoryData.find((data) => {
-    return data.id == index;
+    return data.id == id;
   });
 
   return (

@@ -59,10 +59,15 @@ export default function BasicModal() {
             width: "50vw",
             height: "30vw",
             border: "1px soid white",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "10px",
+            justifyContent: "center",
           }}
           sx={style}
         >
-          <PersonAddAltIcon />
+          <PersonAddAltIcon color={`primary`} sx={{fontSize:"50px"}} />
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {`Follow ${user.USERNAME1} to see what they share on Twitter`}
           </Typography>
@@ -73,7 +78,7 @@ export default function BasicModal() {
           >
             Sign up so you never miss their Tweets.
           </Typography>
-          <Stack spacing={2}>
+          <Stack spacing={2} style={{ width:"100%"}}>
             <Button
               style={{
                 color: "white",
