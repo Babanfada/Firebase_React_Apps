@@ -20,11 +20,9 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
- 
-
 const Signupbtn = ({ info }) => {
   const { icon, text, auth } = info;
-
+  const navigate = useNavigate();
   return (
     <>
       <ColorButton
@@ -40,7 +38,9 @@ const Signupbtn = ({ info }) => {
         }}
         variant="contained"
         startIcon={icon}
-        onClick={auth}
+        onClick={() => {
+          auth(navigate);
+        }}
       >
         {text}
       </ColorButton>

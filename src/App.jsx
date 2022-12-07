@@ -52,6 +52,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./Firebase";
 import useLocalStorage from "./assets/Components/useLocalStorage";
+import BasicModal from "./assets/Components/BasicModal";
 // import { useNavigate } from "react-router-dom";
 
 export const dataContext = createContext("");
@@ -67,10 +68,10 @@ function App() {
   const [currentUser, setcurrentUser] = useLocalStorage("currentUser", false);
 
   const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/Home" />;
+    return currentUser ? children : <Navigate to={"/"} />;
   };
 
-  const signInWithGoogle = () => {
+  const signInWithGoogle = (navigate) => {
     // const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -82,7 +83,7 @@ function App() {
         setcurrentUser(true);
         console.log("signed in");
 
-        //  navigate("/HomeActual");
+        navigate("/HomeActual");
         // ...
       })
       .catch((error) => {
@@ -110,6 +111,15 @@ function App() {
       .catch((error) => {
         // An error happened.
       });
+  };
+
+  const openModal = () => {
+    return (
+      <div>
+        {" "}
+        <BasicModal />{" "}
+      </div>
+    );
   };
 
   // const signInWithApple = () => {
@@ -145,14 +155,14 @@ function App() {
       text: "",
       weight: "",
       Size: "20px",
-      link: "/Home",
+      link: "/",
     },
     {
       component: <HiHashtag />,
       text: "Explore",
       weight: "bold",
       Size: "20px",
-      link: "/Home",
+      link: "/",
     },
 
     {
@@ -220,7 +230,7 @@ function App() {
     {
       icon: "",
       text: "Sign up with Email and Password",
-      auth: "",
+      auth: openModal,
     },
   ];
 
@@ -307,17 +317,10 @@ function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-          <Route path="/Home" exact element={<Home />}>
+          <Route index exact element={<Home />}>
             {/* <Route path="Relevant" element={<Relevant />} /> */}
           </Route>
-          <Route
-            path="/Homes/:id"
-            element={
-              <RequireAuth>
-                <Homes />
-              </RequireAuth>
-            }
-          >
+          <Route path="/Homes/:id" element={<Homes />}>
             <Route path="Relevant/:id" element={<Relevant />} />
           </Route>
           <Route

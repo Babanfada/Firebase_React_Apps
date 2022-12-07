@@ -3,10 +3,12 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { dataContext } from "../../App";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 // import { signInWithGoogle } from "./Signupbtn";
 
 const Dashboard = () => {
   const { signInWithGoogle } = useContext(dataContext);
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -62,7 +64,9 @@ const Dashboard = () => {
           }}
           variant="contained"
           size="small"
-          onClick={signInWithGoogle}
+          onClick={() => {
+            signInWithGoogle(navigate);
+          }}
         >
           Sign Up
         </Button>
