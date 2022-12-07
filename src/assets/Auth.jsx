@@ -3,6 +3,8 @@ import { dataContext } from "../App";
 import Signupbtn from "./Components/Signupbtn";
 import Terms from "./Terms";
 
+
+
 const Auth = () => {
   const { infos } = useContext(dataContext);
   const styles = {
@@ -11,8 +13,9 @@ const Auth = () => {
     color: "rgba(255, 255, 255, 0.379)",
     lineHeight: "0",
   };
-
   console.log(infos);
+
+  
   return (
     <div
       style={{

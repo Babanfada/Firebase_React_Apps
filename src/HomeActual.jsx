@@ -22,17 +22,24 @@ import { IoIosMore } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import Relevant from "./assets/Components/Relevant";
 import { Outlet, Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+import USER from "./assets/Components/USER";
+import BasicPopover from "./assets/Components/BasicPopover";
 // import { Link, Outlet } from "react-router-dom";
-const Homes = () => {
-  const { contents, TweetDetails } = useContext(dataContext);
-  const { id } = useParams();
-  const Datum = categoryData.find((data) => {
-    return data.id == id;
+const HomeActual = () => {
+  const { contents } = useContext(dataContext);
+  //   const { id } = useParams();
+  //   const Datum = categoryData.find((data) => {
+  //     return data.id == id;
+  //   });
+  //   const user = TweetDetails.find((data) => {
+  //     return data.id == id;
+  //   });
+
+  const content2 = contents.filter((item, index) => {
+    return index != 2;
   });
-  const user = TweetDetails.find((data) => {
-    return data.id == id;
-  });
-const content1 = contents.slice(0, 3);
   return (
     <div
       style={{
@@ -48,23 +55,57 @@ const content1 = contents.slice(0, 3);
           style={{
             padding: "2vh 0 5vh 4vw",
             // border: "1px solid red",
-            height: "fit-content",
+            height: "100vh",
             position: "sticky",
             top: "0vh",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1vw",
+            justifyContent: "space-between",
           }}
         >
-          {content1.map((content, index) => (
-            <div
-              key={index}
-              style={{
-                cursor: "pointer",
-              }}
-            >
-              <Link style={{ textDecoration: "none" }} to={content.link}>
-                <Pages contents={content} />
-              </Link>
+          <div
+            style={{
+              // border: "1px solid red",
+              display: "flex",
+              flexDirection: "column",
+              gap: "1vw",
+            }}
+          >
+            <div>
+              {content2.map((content, index) => (
+                <div
+                  key={index}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                >
+                  <Link style={{ textDecoration: "none" }} to={content.link}>
+                    <Pages contents={content} />
+                  </Link>
+                </div>
+              ))}
             </div>
-          ))}
+            <div>
+              <Button
+                style={{
+                  color: "white",
+                  borderRadius: "50px",
+                  borderColor: "white",
+                  fontWeight: "bold",
+                  width: "15vw",
+                }}
+                variant="contained"
+                size="large"
+              >
+                Tweet
+              </Button>
+            </div>
+          </div>
+          <div style={{ paddingRight: "10px" }}>
+            {/* <USER /> */}
+            <BasicPopover />
+          </div>
         </div>
         <div
           style={{
@@ -72,7 +113,8 @@ const content1 = contents.slice(0, 3);
             borderRight: "1px solid  rgba(255, 255, 255, 0.379)",
           }}
         >
-          <TrendNoticeComp Datum={Datum} />
+          <Outlet />
+          {/* <TrendNoticeComp Datum={Datum} />
           <TrendNotice Datum={Datum} />
 
           {TweetDetails.map((TweetDetail, index) => {
@@ -88,7 +130,7 @@ const content1 = contents.slice(0, 3);
                 <TweetDisplay key={index} TweetDetail={TweetDetail} />
               </Link>
             );
-          })}
+          })} */}
         </div>
 
         {/* Authorization Section */}
@@ -123,7 +165,7 @@ const content1 = contents.slice(0, 3);
               <FiSettings />
             </div>
           </div>
-          <div
+          {/* <div
             style={{
               padding: "1vw 3vw 0 2vw",
               //   position: "sticky",
@@ -137,7 +179,7 @@ const content1 = contents.slice(0, 3);
 
           <div style={{ padding: " 0 2.1vw", marginTop: "10px" }}>
             <Outlet />
-          </div>
+          </div> */}
 
           <div
             style={{
@@ -223,7 +265,7 @@ const content1 = contents.slice(0, 3);
         </div>
       </div>
       {/* Bottom Section */}
-      <div
+      {/* <div
         style={{
           position: "fixed",
           bottom: "0",
@@ -236,9 +278,9 @@ const content1 = contents.slice(0, 3);
         }}
       >
         <Dashboard />
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default Homes;
+export default HomeActual;

@@ -1,8 +1,12 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import { dataContext } from "../../App";
+import { useContext } from "react";
+// import { signInWithGoogle } from "./Signupbtn";
 
 const Dashboard = () => {
+  const { signInWithGoogle } = useContext(dataContext);
   return (
     <div
       style={{
@@ -24,9 +28,7 @@ const Dashboard = () => {
         >
           Don't miss what's happening
         </h5>
-        <small
-          style={{ fontweight: "bold",  margin: "0" }}
-        >
+        <small style={{ fontweight: "bold", margin: "0" }}>
           People on Twitter are the first to know.
         </small>
       </div>
@@ -60,6 +62,7 @@ const Dashboard = () => {
           }}
           variant="contained"
           size="small"
+          onClick={signInWithGoogle}
         >
           Sign Up
         </Button>

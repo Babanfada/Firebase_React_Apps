@@ -19,8 +19,13 @@ import { Link, Outlet } from "react-router-dom";
 import Terms from "./assets/Terms";
 import Relevant from "./assets/Components/Relevant";
 import BasicModal from "./assets/Components/BasicModal";
+
 const Home = () => {
   const { contents, TweetDetails } = useContext(dataContext);
+  const content1 = contents.slice(0, 3);
+
+ 
+
   return (
     <div
       style={{
@@ -41,7 +46,7 @@ const Home = () => {
             top: "0vh",
           }}
         >
-          {contents.map((content, index) => (
+          {content1.map((content, index) => (
             <div
               key={index}
               style={{

@@ -12,7 +12,7 @@ const Pages = ({ contents }) => {
     justifyContent: "flex-start",
     padding: "15px",
     textAlign: "center",
-    width: "135px",
+    width: "fit-content",
     height: "50px",
   };
   return (

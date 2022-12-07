@@ -10,3 +10,11 @@
   font-size: 2vw;
   color: white;
 }
+
+
+/* .......This styles belongs to the User components */
+.user:hover {
+  background-color: rgba(211, 211, 211, 0.089);
+  cursor: pointer;
+}
+
