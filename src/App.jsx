@@ -53,6 +53,7 @@ import {
 import { auth } from "./Firebase";
 import useLocalStorage from "./assets/Components/useLocalStorage";
 import BasicModal from "./assets/Components/BasicModal";
+import Mtable from "./Mtable";
 // import { useNavigate } from "react-router-dom";
 
 export const dataContext = createContext("");
@@ -318,6 +319,9 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route index exact element={<Home />}>
+            {/* <Route path="Relevant" element={<Relevant />} /> */}
+          </Route>
+          <Route path="table" element={<Mtable />}>
             {/* <Route path="Relevant" element={<Relevant />} /> */}
           </Route>
           <Route path="/Homes/:id" element={<Homes />}>

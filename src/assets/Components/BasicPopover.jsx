@@ -41,7 +41,9 @@ export default function BasicPopover() {
         // }}
       >
         <Typography sx={{ p: 2 }}>
-          <Button onClick={handleSignOut} variant="contained">Logout</Button>
+          <Button onClick={handleSignOut} variant="contained">
+            Logout
+          </Button>
           {/* <ul>
             <li>
               <a href="#">Add an existing Account</a>
